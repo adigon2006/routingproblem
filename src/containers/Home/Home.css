@@ -1,0 +1,22 @@
+.Home ul
+{
+list-style: none;
+}
+
+.Home li
+{
+display: inline;
+color:black;
+margin-left:20px;
+padding:8px 10px;
+}
+
+.Home li a:active
+{
+    text-decoration: none;
+    padding:8px 10px;
+}
+.Home li:hover {
+background-color: orange;
+color:#ffffff;
+}
