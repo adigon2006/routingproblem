@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Route} from 'react-router-dom';
 import './Courses.css';
 import Course from '../Course/Course';
 class Courses extends Component {
@@ -19,9 +19,9 @@ class Courses extends Component {
     {
         console.log(this.props)   
     }
-    clickCourseHandler(id){
-     this.props.history.push('/course/'+id);   
-    }
+    // clickCourseHandler(id){
+    //  this.props.history.push('/course/'+id);   
+    // }
     render () {
         return (
             <div>
@@ -33,11 +33,12 @@ class Courses extends Component {
                         <Link 
                         
                         // to={this.props.match.url+"/"+course.id+"/"+course.title} 
+                        key={course.id}
                         to={{
-                            pathname: this.props.match.url+"/"+course.id,
-                            search: '?title='+course.title
-                        }}
-                        key={course.id}>
+                            pathname:this.props.match.url + '/' + course.id,
+                            search: '?title=' + course.title
+                    
+                    }}>
                         <article className="Course" >{course.title}
                         
                         </article>
@@ -46,7 +47,8 @@ class Courses extends Component {
                         })
                     }
                 </section>
-                {/* <Route path={this.props.match.url+'/:id/:title'} exact component={Course} /> */}
+                <Route path={this.props.match.url + '/:courseId'} component={Course} />
+                {/* <Route path="/courses/:courseId/:courseTitle" component={Course} /> */}
             </div>
         );
     }

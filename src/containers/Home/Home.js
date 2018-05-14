@@ -1,7 +1,8 @@
 import React,{Component} from 'react';
-import {Route,NavLink,Redirect,Switch} from 'react-router-dom';
+import {Route,NavLink,Switch,Redirect} from 'react-router-dom';
 import Courses from './Courses/Courses';
-import Course from './Course/Course';
+import PageNotFound from '../../component/PageNotFound/PageNotFound';
+// import Course from './Course/Course';
 import Users from './Users/Users';
 import './Home.css';
 class Home extends Component{
@@ -31,13 +32,17 @@ class Home extends Component{
     
     
     
-     {/* <Redirect from="/all-courses" to="/courses" /> */}
-     {/* <Redirect from="/home" to="/" /> */}
+    
+ 
      <Switch>
      <Route path="/users" component={Users} />
-     <Route path="/courses/:courseId/:courseTitle" component={Course} />
-     <Route path="/courses" exact component={Courses} />
-     
+     {/* <Route path="/courses/:courseId/:courseTitle" component={Course} /> */}
+     {/* <Route path="/courses/:courseId/" component={Course} /> */}
+     <Route path="/courses" component={Courses} />
+     <Redirect from="/all-courses" to="/courses" />
+     {/* <Redirect from="/home" exact to="/" />
+     <Route render={() => <h1>Page Not Found</h1>} /> */}
+     <Route component={PageNotFound}/>
      </Switch>
       </div>
      );
